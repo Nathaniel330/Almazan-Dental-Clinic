@@ -429,6 +429,13 @@ footer a:hover {
     }
 }
 
+@media (max-width: 470px) {
+    .banner-center {
+        left: auto;
+    }
+}
+
+
 @media (min-width: 576px) {
     .lookingForDentistSub {
         display: flex;
