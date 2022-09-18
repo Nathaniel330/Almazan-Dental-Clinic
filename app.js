@@ -22,10 +22,10 @@ app.set("views", "render")
 
 
 //connect
-const port = 3000
-app.listen(port, ()=>{
-    console.log(`Connected to port: ${port}`)
-})
+// const port = 3000
+// app.listen(port, ()=>{
+//     console.log(`Connected to port: ${port}`)
+// })
 
 
 // mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=>{
