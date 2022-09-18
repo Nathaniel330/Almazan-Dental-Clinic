@@ -430,6 +430,11 @@ footer a:hover {
 }
 
 @media (max-width: 470px) {
+    .banner-bottom {
+        text-shadow: none;
+        bottom: 40%;
+        left:inherit;
+    }
     .banner-home {
         text-align: center;
     }
