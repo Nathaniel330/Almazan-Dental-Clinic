@@ -27,6 +27,9 @@ app.set("views", "render")
 //     console.log(`Connected to port: ${port}`)
 // })
 
+var port_number = server.listen(process.env.PORT || 3000);
+app.listen(port_number);
+
 
 // mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=>{
 //     if(err) throw err
