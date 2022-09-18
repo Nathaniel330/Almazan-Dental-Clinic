@@ -1,0 +1,36 @@
+current work technique:
+
+1. npm init, install
+
+2. app.js
+    require express, then make express()
+    require dotenv, then make config
+    require mongoose
+    require routes*, .use the route(s)       *contains nothing for now
+
+
+    view engine
+
+    middleware
+
+    connection
+        port  .listen
+        mongoose  .connect **    cant do this without step 3
+
+3. .env ** 
+    database link + credentials
+
+4. model
+    require mongoose
+
+5.0 create controller
+    require model
+
+5.1 route
+    require express
+    require controller
+    route*                                  *complete routing from app.js
+        i.e. router.get(path, handler**)     **controller is the handler
+
+***that is all. for me the most confusing part is the routing. it also does not help that
+i know very little javascript and mongodb syntax, functions, methods. for now, i must understand the code - copy and pasting is fine. time will come i will be able to come up with my own functioning code.
