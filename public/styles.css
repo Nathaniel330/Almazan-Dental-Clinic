@@ -1,8 +1,25 @@
 html {
     font-size: smaller;
+    user-select: none;
 }
 
-/* NAVBAR start*/
+body {
+    background-color: #e5f4e3;
+}
+
+p, .shouldBe003f91 {
+    color:#003f91;
+}
+
+label {
+    font-weight: bold;
+}
+
+.navbar {
+    height: 20vh;
+}
+
+/*---------------------------------------------NAVBAR start---------------------------------------------*/
 nav, footer {
     background-color: #003f91;
     /* color: black; */
@@ -20,15 +37,7 @@ nav, footer {
     border-bottom: solid #ffff !important;
 }
 
-.navbar-brand {
-    margin-left: 10vw;
-}
-
-.navbar-toggler, .navbar-nav {
-    margin-right: 10vw;
-}
-
-/* --------------  HOME transparent navbar ------------------*/
+/* -------------- HOME transparent navbar ------------------*/
 div .navbar .navbar-nav li a {          
     color: black;
 }
@@ -72,7 +81,7 @@ div .navbar .dropdown:hover li:hover {
 
 
 
-/* --------------  NOT transparent navbar  -------------------*/
+/*------------------ NOT transparent navbar ------------------*/
 .navbar .navbar-nav li a {           
     color: white;
 }
@@ -111,37 +120,87 @@ nav li:hover {
 .dropdown:hover li:hover {
     border-bottom: solid white;
 }
-/* NAVBAR end*/
+/*---------------------------------------------NAVBAR end---------------------------------------------*/
 
 
 
-body {
+
+/*------------------ Home Banner Carousel------------------ */
+#banner_home .prev,
+#banner_home .next{
+    position: absolute;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 5px;
+    padding: 0px 10px;
+    top: 50%;
     background-color: #e5f4e3;
+    border-radius: 10%;
+    z-index: 1;
 }
 
+#banner_home .next{
+    right: 0%;
+}
+
+
+
+/*------------------ Home Slideshow @ XS - S screen view ------------------*/
+.mySlides {
+    width: 98vw;
+    display:none;
+    padding: 1%;
+}
+
+.mySlides img{
+    width: 100%;
+    height: 320px;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 3s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+/*------------------Home Slideshow @ 768px (medium screen view)------------------*/
 .slides {
+    padding: 1%;
     display: flex;
+    gap: 1%;
 }
 .slides :nth-child(n) {
     flex: 1;
-    min-width: 0;
+    width: 100%;
     height: 320px;
     overflow: hidden;
 }
 
+
+
+
+
+/*------------------------------------ Pages: BANNER Settings start------------------------------------ */
 #banner_home {
     width: 100%;
-    height: 740px;
-    background-image: url("./img/dental-equipment.jfif");
+    height: 100vh;
+    background-image: url("https://cdn.create.vista.com/api/media/small/264647144/stock-photo-dental-concept-dental-model-and");
     background-size: 100% 100%; 
     background-repeat: no-repeat;
     position: relative;
 }
 
-#banner_about {
+#banner_about,
+#banner_services_basic,
+#banner_services_specialized {
     width: 100%;
-    height: 450px;
-    /* background-image: url("https://cdn.pixabay.com/photo/2022/09/06/18/16/lake-7437204_960_720.jpg"); */
+    height: 80vh;
     background-image: url("https://cdn.pixabay.com/photo/2020/02/19/09/28/doctor-4861811_960_720.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -149,23 +208,11 @@ body {
 }
 
 #banner_services_basic {
-    width: 100%;
-    height: 450px;
     background-image: url("./img/basic.jfif");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 #banner_services_specialized {
-    width: 100%;
-    height: 450px;
-    /* background-image: url("https://cdn.create.vista.com/api/media/small/524042632/stock-photo-dentist-checking-woman-patient-teeth"); */
-    background-image: url("./img/denture-2836230_960_720.png");
     background-image: url("./img/cleardenta.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 .banner-center {
@@ -189,45 +236,61 @@ body {
     font-weight: bold;
     bottom: 30%;
     left: 10%;
-    /* transform: translate(-50%, -50%); */
 }
+/*------------------------------------ Pages: BANNER Settings end------------------------------------ */
 
-p, .shouldBe003f91 {
-    color:#003f91;
-}
 
-label {
-    font-weight: bold;
-}
 
+
+/*------------------------------------ FORM: Book an Appointment start------------------------------------ */
 .iField {
     background-color: #5DA9E9;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 5%;
     font-size: medium;
 }
 
 .iFieldArea {
     background-color: #5DA9E9;
     width: 100%;
-    height: 250px;
-    margin-bottom: 30px;
+    height: 20%;
+    margin-bottom: 5%;
     font-size: medium;
 }
 
 input[type="radio"]{
+    transform: scale(2);
     margin-left: 40px;
+    margin-right: 5px;
 }
-
 
 .booking, .aboutBodyChildReverse {
     background-color: #ffff;
 }
 
 .booking form {
-    padding: 5%;
+    padding: 7%;
 }
 
+::-webkit-calendar-picker-indicator:hover {
+    filter: invert(100%) sepia(100%) saturate(1854%) hue-rotate(3deg) brightness(107%) contrast(106%);
+  }
+
+::-webkit-calendar-picker-indicator {
+    padding-left: calc(100% - 110px);
+}
+  
+::-webkit-datetime-edit-fields-wrapper {
+    text-align: center;
+    width: 100%;
+    background: #5DC9E9; 
+}
+/*------------------------------------ FORM: Book an Appointment end------------------------------------ */
+
+
+
+
+/*------------------------------------ Page Content Style start------------------------------------ */
 .aboutHead img, .aboutBody img{
     width: 60%;
 }
@@ -261,6 +324,23 @@ input[type="radio"]{
     padding: 30px 0;
 }
 
+.mapouter{
+    height:300px;
+    width: 80vw;
+}
+
+.gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    height:100%;
+    width:100%;
+}
+/*------------------------------------ Page Content Style end ------------------------------------ */
+
+
+
+
+/*------------------------------------ Button Style start ------------------------------------ */
 .submitBTN {
     background-color: #003f91;
     border-color: #003f91;
@@ -279,8 +359,6 @@ input[type="radio"]{
 
 .bookBTN {
     -webkit-text-stroke: 0px;
-    /* background-color: #003f91; */
-    /* background-color: #6D326D; */
     background-color: green;
     color: #ffff;
     border: 2px solid transparent;
@@ -290,7 +368,6 @@ input[type="radio"]{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    /* cursor: pointer; */
     border-radius: 30px;
 }
 
@@ -341,36 +418,14 @@ input[type="radio"]{
     background-color: #003f91;
     color: #ffff;
 }
-
-::-webkit-calendar-picker-indicator:hover {
-    filter: invert(100%) sepia(100%) saturate(1854%) hue-rotate(3deg) brightness(107%) contrast(106%);
-  }
-
-::-webkit-calendar-picker-indicator {
-    padding-left: 80%;
-}
-  
-::-webkit-datetime-edit-fields-wrapper {
-    padding: 5px;
-    padding-right: 10px;
-    background: #5DC9E9; 
-}
-
-.mapouter{
-    height:300px;
-    width: 80vw;
-}
-
-.gmap_canvas {
-    overflow:hidden;
-    background:none!important;
-    height:100%;
-    width:100%;
-}
+/*------------------------------------ Button Style end ------------------------------------ */
 
 
-/* FOOTER start*/
+
+
+/*--------------------------------------------- FOOTER start ---------------------------------------------*/
 footer {
+    padding-top: 5%;
     color: white;
 }
 
@@ -410,19 +465,12 @@ footer ul ul li {
 .extra {
     background-color: #062844;
 }
+/*--------------------------------------------- FOOTER end ---------------------------------------------
 
-@media (max-width: 375px) {
-    ::-webkit-calendar-picker-indicator {
-        padding-left: 60%;
-    }
-}
 
-@media (min-width: 375px) {
-    ::-webkit-calendar-picker-indicator {
-        padding-left: 68%;
-    }
-}
 
+
+--------------------------------------------- MEDIA QUERY ---------------------------------------------*/
 @media (max-width: 470px) {
     .banner-bottom {
         -webkit-text-stroke: 0px;
@@ -431,7 +479,23 @@ footer ul ul li {
     }
 }
 
+@media (max-width: 500px) {
+    .next,
+    .prev {
+        display: none;
+    }
+}
+
 @media (min-width: 576px) {
+    .navbar-brand,
+    .extra__start {
+        margin-left: 10%;
+    }
+    .navbar-toggler, .navbar-nav,
+    .extra__end {
+        margin-right: 10%;
+    }
+
     .services_display {
         display: flex;
         gap: 2%;
@@ -466,10 +530,6 @@ footer ul ul li {
         width: 80%;
         padding-left: 20%;
     }
-
-    ::-webkit-calendar-picker-indicator {
-        padding-left: 20%;
-    }
 }
 
 @media (min-width: 640px) {
@@ -488,9 +548,7 @@ footer ul ul li {
 }
 
 @media (min-width: 850px) {
-    ::-webkit-calendar-picker-indicator {
-        padding-left: 50%;
-    }
+
 }
 
 @media (max-width: 960px) {
@@ -525,11 +583,7 @@ footer ul ul li {
 }
 
 @media (min-width: 1200px) {
-    ::-webkit-calendar-picker-indicator {
-        padding-left: 65%;
-    }
-
     .booking {
-        width: 1000px;
+        width: 666px;
     }
 }

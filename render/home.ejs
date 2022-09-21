@@ -3,11 +3,13 @@
 <%- include("./partials/head.ejs")%>
 
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column align-items-center min-vh-100">
 
 
 <div id="banner_home" class="text-left">
     <%- include("./partials/nav-transparent.ejs")%>
+    <a id="prev" class="prev">&#10094;</a>
+    <a id="next" class="next">&#10095;</a>
     <p class="banner-bottom display-4">Our vision is to be the preferred 
         <br> dental clinic of all the clients we serve <br>
         <a href="#appointment" class="bookBTN mt-3 text-decoration-none">BOOK AN APPOINTMENT</a>
@@ -17,14 +19,14 @@
 <div style="height:15vh"></div> <!--SPACER-->
 
 <div class="text-center">
-    <p class="display-4 fw-bold">SERVICES</p>
+    <p class="display-4 fw-bold mb-4">SERVICES</p>
     <div class="services_display">
-        <div>
+        <div class="mb-5">
             <img src="/img/clean.jfif" class="img-fluid" alt=""><br>
             <span class="display-6 fw-bold">Basic Dental Services</span><br>
             <a href="/services_basic" class="viewServicesBTN">View Services</a>
         </div>
-        <div>
+        <div class="mb-5">
             <img src="/img/dental-surgery.jfif" class="img-fluid" alt=""><br>
             <span class="display-6 fw-bold">Specialized Services</span><br>
             <a href="/services_specialized" class="viewServicesBTN">View Services</a>
@@ -34,109 +36,165 @@
 
 <div style="height:15vh"></div> <!--SPACER-->
 
-<div id="appointment" class="d-flex flex-column justify-content-center align-items-center p-4">
-    <div class="booking p-4">
-        <form action="/appointment" method="POST">
-            <div class="text-center">
-                <p class="display-4 fw-bold">Book an Appointment</p>
+<div id="appointment" class="booking">
+    <form action="/appointment" method="POST">
+        <div class="text-center mb-5">
+            <p class="display-4 fw-bold">Book an Appointment</p>
+        </div>
+
+        <div class="d-sm-flex justify-content-sm-between">
+            <div class="entryHalved">
+                <label for="firstname">First Name *</label>
+                <input class="iField" type="text" name="firstname" id="firstname"/>
             </div>
 
-            <div class="d-sm-flex justify-content-sm-between">
-                <div class="entryHalved">
-                    <label for="firstname">First Name*</label>
-                    <input class="iField" type="text" name="firstname" id="firstname"/>
-                </div>
+            <div class="entryHalved">
+                <label for="lastname">Last Name *</label>
+                <input class="iField" type="text" name="lastname" id="lastname"/>
+            </div>
+        </div>
 
-                <div class="entryHalved">
-                    <label for="lastname">Last Name*</label>
-                    <input class="iField" type="text" name="lastname" id="lastname"/>
-                </div>
+        <div class="d-sm-flex justify-content-sm-between">
+            <div class="entryHalved">
+                <label for="phone">Phone Number *</label>
+                <input class="iField" type="tel" name="phone" id="phone"/>
             </div>
 
-            <div class="d-sm-flex justify-content-sm-between">
-                <div class="entryHalved">
-                    <label for="phone">Phone Number*</label>
-                    <input class="iField" type="tel" name="phone" id="phone"/>
-                </div>
+            <div class="entryHalved">
+                <label for="email">E-mail *</label>
+                <input class="iField" type="email" name="email" id="email"/>
+            </div>
+        </div>
 
-                <div class="entryHalved">
-                    <label for="email">E-mail*</label>
-                    <input class="iField" type="email" name="email" id="email"/>
-                </div>
+        <div class="d-sm-flex justify-content-sm-between">
+            <div class="entryHalved">
+                <label for="date">Appointment Date *</label>
+                <input class="iField" type="date" name="date" id="date"/>
             </div>
 
-            <div class="d-sm-flex justify-content-sm-between">
-                <div class="entryHalved">
-                    <label for="date">Preferred Appointment Date*</label>
-                    <input class="iField" type="date" name="date" id="date"/>
-                </div>
-
-                <div class="entryHalved">
-                    <label for="time">Preferred Appointment Time*</label>
-                    <input class="iField" type="time" min="10:00" max="18:00" name="time" id="time"/>
-                </div>
+            <div class="entryHalved">
+                <label for="time">Appointment Time *</label>
+                <input class="iField" type="time" min="10:00" max="18:00" name="time" id="time"/>
             </div>
+        </div>
+        
+       
+        <label for="service">Service Required *</label>
+        <select class="iField" name="service" id="service">
+            <option value="Null">---</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Check-up">Check-up</option>
+            <option value="Cosmetics">Cosmetics</option>
+            <option value="Fillings">Fillings</option>
+            <option value="Surgery">Surgery</option>
+            <option value="Orthodontics">Orthodontics</option>
+            <option value="Others">Others</option>
+        </select>
 
-            <label for="service">Service Required*</label>
-            <select class="iField" name="service" id="service">
-                <option value="Null">---</option>
-                <option value="Cleaning">Cleaning</option>
-                <option value="Check-up">Check-up</option>
-                <option value="Cosmetics">Cosmetics</option>
-                <option value="Filings">Filings</option>
-                <option value="Surgery">Surgery</option>
-                <option value="Orthodontics">Orthodontics</option>
-                <option value="Others">Others</option>
-            </select>
+        <p class="text-dark fw-bold">Current Patient? *
+        <input type="radio" id="current" name="current" value="YES"/>
+        <label for="askCurrent1">YES</label>
 
-            <p class="text-dark fw-bold">Current Patient?
-            <input type="radio" id="current" name="current" value="YES"/>
-            <label for="askCurrent1">YES</label>
+        <input type="radio" id="current" name="current" value="NO">
+        <label for="askCurrent2">NO</label>
+        </p>
 
-            <input type="radio" id="current" name="current" value="NO">
-            <label for="askCurrent2">NO</label>
-            </p>
+        <label for="dentist">If Yes, Name of Attending Dentist (may be left blank)</label>
+        <input class="iField" type="text" name="dentist" id="dentist"/>
 
-            <label for="dentist">If Yes, Name of Attending Dentist (may be left blank)</label>
-            <input class="iField" type="text" name="dentist" id="dentist"/>
+        <label for="message">Message</label>
+        <textarea class="iFieldArea" id="message" name="message" rows="4" cols="50"></textarea>
 
-            <label for="message">Message</label>
-            <textarea class="iFieldArea" id="message" name="message" rows="4" cols="50"></textarea>
-
-            <div class="text-center"><input type="submit" value="submit" class="submitBTN"></div>
-        </form>
-    </div>
+        <div class="text-center"><input type="submit" value="SUBMIT" class="submitBTN"></div>
+    </form>
 </div>
 
 <div style="height:15vh"></div> <!--SPACER-->
 
 
+<div class="d-md-none">
+    <div class="mySlides fade">
+        <img src="/img/toothfillings.jfif">
+    </div>
 
-<div>
+    <div class="mySlides fade">
+        <img src="/img/toothextraction.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/clean.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/panoramiccephalometric.jpeg">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/pediatric.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/implants.png">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/denture.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/orthodontic-braces.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/dental-surgery.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/management.jfif">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/whitening.png">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="/img/kidswaitingarea.jpeg">
+    </div>
+</div>
+
+
+<div class="d-none d-md-block">
     <div class="slide">
         <div class="slides">
-            <img src="/img/toothfillings.jfif" class="" alt="">
-            <img src="/img/toothextraction.jfif" class="" alt="">
-            <img src="/img/clean.jfif" class="" alt="">
+            <img src="/img/toothfillings.jfif" alt="">
+            <img src="/img/toothextraction.jfif" alt="">
+            <img src="/img/clean.jfif" alt="">
         </div>
     </div>
     <div class="slide">
         <div class="slides">
-            <img src="/img/panoramiccephalometric.jpeg" class="" alt="">
-            <img src="/img/pediatric.jfif" class="" alt="">
-            <img src="/img/implants.png" class="" alt="">
+            <img src="/img/panoramiccephalometric.jpeg" alt="">
+            <img src="/img/pediatric.jfif" alt="">
+            <img src="/img/implants.png" alt="">
         </div>
     </div>
     <div class="slide">
         <div class="slides">
-            <img src="/img/denture.jfif" class="img-fluid" alt="">
-            <img src="/img/orthodontic-braces.jfif" class="img-fluid" alt="">
-            <img src="/img/dental-surgery.jfif" class="img-fluid" alt="">
+            <img src="/img/denture.jfif" alt="">
+            <img src="/img/orthodontic-braces.jfif" alt="">
+            <img src="/img/dental-surgery.jfif" alt="">
+        </div>
+    </div>
+    <div class="slide">
+        <div class="slides">
+            <img src="/img/management.jfif" alt="">
+            <img src="/img/whitening.png" alt="">
+            <img src="/img/kidswaitingarea.jpeg" alt="">
         </div>
     </div>
 </div>
 
-<div class="lookingForDentist">
+<div class="lookingForDentist" style="width:100%">
     <div class="lookingForDentistSub">
         <div>
             <p><span>Looking for a Dentist?</span><br><br> Book a FREE Consultation</p>
