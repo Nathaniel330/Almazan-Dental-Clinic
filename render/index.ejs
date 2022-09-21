@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header.ejs')%>
+<body>
+    <%- include('./partials/nav-admin.ejs')%>
+    <section class="p-5 container">
+        <h1 class="text-start">Appointments</h1>
+        <div class="container p-5">
+                    <table class="table mt-5 text-center">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Patient Name</th>
+                            <th scope="col">Date of Appointment</th>
+                            <th scope="col">Time of Appointment</th>
+                            <th scope="col">Type of Service</th>
+                            <th scope="col">Assigned Dentist</th>
+                            <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <%if (appointment.length) {%>
+                                <%appointment.sort(function(a, b){b-a})  %>
+                                <%for(var i=0; i < appointment.length; i++){%>
+                            <tr>
+                                
+                                <td><%=i+1%></td>
+                                <td><%=appointment[i].firstname%> <%=appointment[i].lastname%></td>
+                                <td><%=appointment[i].date%></td>
+                                <td><%=appointment[i].time%></td>
+                                <td><%=appointment[i].service%></td>
+                                <td><%=appointment[i].dentist%></td>
+                                <td class="d-flex">
+                                    <button class="btn btn-primary mx-1"  data-bs-toggle="modal" data-bs-target="#exampleModal<%=i+1%>">View</button>
+                                    <button class="btn btn-danger mx-1"  data-bs-toggle="modal" data-bs-target="#deletemodal<%=i+1%>">Delete</button>
+                                    <button class="btn btn-success mx-1"  data-bs-toggle="modal" data-bs-target="#assign<%=i+1%>">Assign</button>
+                                </td>
+                            </tr>
+                            <!--View Modal -->
+                        <div class="modal fade" id="exampleModal<%=i+1%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">Patient Information</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                <h5>Name: <%=appointment[i].firstname%> <%=appointment[i].lastname%> </h5>
+                                <h5>Email: <%=appointment[i].email%> </h5>
+                                <h5>Phone: <%=appointment[i].phone%> </h5>
+                                <h5>Date of Appointment: <%=appointment[i].date%> </h5>
+                                <h5>Time of Appointment: <%=appointment[i].time%> </h5>
+                                <h5>Type of Service: <%=appointment[i].service%> </h5>
+                                <h5>Message: <%=appointment[i].message%> </h5>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Update Modal -->
+                        <div class="modal fade" id="assign<%=i+1%>" tabindex="-1" aria-labelledby="assignModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h3 class="modal-title" id="assignModalLabel">Assign Dentist</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="/update/<%=appointment[i].id%>" class="d-inline">
+                                        <h5>ID: <%=i+1%>  </h5>
+                                        <h5>Name: <%=appointment[i].firstname%> <%=appointment[i].lastname%> </h5>
+                                        <h5>Type of Service: <%=appointment[i].service%> </h5>
+                                        <h5 for="dentist">Dentist:</h5>
+                                        <input type="text" name="dentist" class="form-control" placeholder="<%=appointment[i].dentist%>"/>
+                                        <div class="modal-footer">
+                                        <input class="btn btn-success" type="submit" value="Assign">
+                                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="deletemodal<%=i+1%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletemodal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deletemodal<%=i+1%>">Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete patient <b> <%= appointment[i].firstname%> <%= appointment[i].lastname%>? </b></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <form action="/appointment/<%= appointment[i].id%>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                    
+                        
+
+
+                            <%}%>
+                        <%} else{%>
+                            <tr><h2 class="text-center text-danger">No Appointment to display</h2></tr>
+                        <%}%>
+                    
+                        </tbody>
+                        </table>
+                        
+        </div>
+    </section>
+    
+</body>
+</html>

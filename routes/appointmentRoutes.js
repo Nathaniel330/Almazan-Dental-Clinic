@@ -1,5 +1,6 @@
 const express = require("express")
-const ShoeBrand = require("../model/ShoeBrand")
+const Appointment = require("../model/appointment")
+const appController = require('../controllers/appointmentController');
 const router = express.Router()
 
 router.get("/", (kahilingan, tugon)=>{
@@ -18,17 +19,17 @@ router.get("/services_specialized", (req, res)=>{
     res.status(201).render("services_specialized", {title:"SPECIALIZED SERVICES"})
 })
 
-// router.get("/appointment", (req, res)=>{
-//     res.status(201).render("appointment", {title:"ONLINE APPOINTMENT"})
-// })
 
-// router.get("/careers", (req, res)=>{
-//     res.status(201).render("careers", {title:"CAREERS"})
-// })
+router.get('/admin', appController.appointmentIndex);
 
-// router.get("/contact_us", (req, res)=>{
-//     res.status(201).render("contact_us", {title:"CONTACT US"})
-// })
+router.get('/appointment/:id', appController.appointmentFind)
 
+router.post('/appointment', appController.appointmentAdd)
+
+router.delete('/appointment/:id', appController.appointmentDelete)
+
+router.get('/add', appController.appointmentAddPage)
+
+router.post('/update/:id', appController.appointmentUpdate)
 
 module.exports = router;

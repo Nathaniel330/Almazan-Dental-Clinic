@@ -1,7 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const dotEnv = require("dotenv")
-const routes = require("./routes/shoeRoutes")
+const routes = require("./routes/appointmentRoutes")
 const app = express()
 const methodOverride = require('method-override');  
 
