@@ -5,7 +5,12 @@
     <%- include('./partials/nav-admin.ejs')%>
     <section class="p-5 container">
         <h1 class="text-start">Appointments</h1>
+        <h4>Date Today <%=today%> </h4>
         <div class="container p-5">
+            <div class="d-flex justify-content-start gap-2">
+            <div class=""><a class="nav-link fs-5 fw-normal text-light" href="/admin"></a><button class="btn btn-warning">🙍‍♂️ <%=appointment.length%> Total Appointments</button></a> </div>
+            <div class=""><a class="nav-link fs-5 fw-normal text-light" href="/dentist"><button class="btn btn-info">👨‍⚕️ <%=dentist.length%> Total Dentist</button> </a></div>
+            </div>
                     <table class="table mt-5 text-center">
                         <thead>
                             <tr>
@@ -15,13 +20,13 @@
                             <th scope="col">Time of Appointment</th>
                             <th scope="col">Type of Service</th>
                             <th scope="col">Assigned Dentist</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             <%if (appointment.length) {%>
-                                <%appointment.sort(function(a, b){b-a})  %>
                                 <%for(var i=0; i < appointment.length; i++){%>
                             <tr>
                                 
@@ -31,10 +36,27 @@
                                 <td><%=appointment[i].time%></td>
                                 <td><%=appointment[i].service%></td>
                                 <td><%=appointment[i].dentist%></td>
-                                <td class="d-flex">
-                                    <button class="btn btn-primary mx-1"  data-bs-toggle="modal" data-bs-target="#exampleModal<%=i+1%>">View</button>
-                                    <button class="btn btn-danger mx-1"  data-bs-toggle="modal" data-bs-target="#deletemodal<%=i+1%>">Delete</button>
-                                    <button class="btn btn-success mx-1"  data-bs-toggle="modal" data-bs-target="#assign<%=i+1%>">Assign</button>
+
+                                <%if (appointment[i].status != 'Done') {%>
+                                <td class="fw-semibold" style="color: orangered"><%=appointment[i].status%></td>
+                                <%} else{%>
+                                    <td class="fw-semibold" style="color: darkgreen"><%=appointment[i].status%></td>
+                                    <%}%>
+                                <td class="d-flex mt-3 gap-2">
+                                    <%if (appointment[i].status != 'Done') {%>
+                                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal<%=i+1%>">View</button>
+                                    <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deletemodal<%=i+1%>">Delete</button>
+                                    <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#assign<%=i+1%>">Assign</button>
+                                
+                                    <button class="btn btn-outline-success rounded-circle"  data-bs-toggle="modal" data-bs-target="#done<%=i+1%>">✔</button>
+
+                                    <%} else{%>
+                                        <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal<%=i+1%>">View</button>
+                                        <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deletemodal<%=i+1%>">Delete</button>
+                                        <button class="btn btn-success disabled"  data-bs-toggle="modal" data-bs-target="#assign<%=i+1%>">Assign</button>
+                                        <button class="btn btn-outline-success rounded-circle disabled"  data-bs-toggle="modal" data-bs-target="#done<%=i+1%>">✔</button>
+                                        <%}%>
+                                    
                                 </td>
                             </tr>
                             <!--View Modal -->
@@ -89,6 +111,7 @@
                             </div>
                             </div>
                         </div>
+                        <!-- Delete Modal -->
                         <div class="modal fade" id="deletemodal<%=i+1%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletemodal" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -108,6 +131,30 @@
                                 </div>
                             </div>
                             </div>
+                            <!-- Done Modal -->
+                            <div class="modal fade" id="done<%=i+1%>" tabindex="-1" aria-labelledby="assignModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h3 class="modal-title" id="assignModalLabel">Confirm Done Appointment</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" action="/updates/<%=appointment[i].id%>" class="d-inline">
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to <b style="color: darkgreen">Change the status of patient <%= appointment[i].firstname%> <%= appointment[i].lastname%> TO DONE? </b></p>
+                                                <input type="text" value="Done" name="status" id="name" hidden>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <input class="btn btn-success" type="submit" value="Yes">
+                                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
                     
                         
 
