@@ -46,16 +46,18 @@ const appointmentAdd = async (req, res) => {
     // const alert = error.details[0].message;
     //res.send(error.details[0].message);
     //check if the inputs are valid 
-    if(error) { return  res.render('home', {title: 'Home', alert: error.details[0].message});}
+    if(error) return  res.render('home', {title: 'Home', alert: error.details[0].message});
     // //check existing email 
     // const userEmail = await User.findOne({email: req.body.email})
     //res.send(userEmail); 
     // if(userEmail) return res.status(404).send("Email Already Exist") 
-    else { const savedAppointment = await appointment.save();
-    res.status(200).redirect('/');
-    console.log('New appointment is added');
+    try {
+        const savedAppointment = await appointment.save();
+        res.status(200).redirect('/');
+        console.log('New appointment is added');
+    } catch (error) {
+        res.status(400).send(error);
     }
-    
     // const appointment = new Appointment(req.body)
     // appointment.save()
     // .then(result => res.redirect("/"))
