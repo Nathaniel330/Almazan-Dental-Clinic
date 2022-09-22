@@ -15,7 +15,7 @@ label {
     font-weight: bold;
 }
 
-.navbar {
+.navbar, .offcanvas-header {
     height: 20vh;
 }
 

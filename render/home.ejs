@@ -45,42 +45,42 @@
         <div class="d-sm-flex justify-content-sm-between">
             <div class="entryHalved">
                 <label for="firstname">First Name *</label>
-                <input class="iField" type="text" name="firstname" id="firstname"/>
+                <input class="iField" type="text" name="firstname" id="firstname" required/>
             </div>
 
             <div class="entryHalved">
                 <label for="lastname">Last Name *</label>
-                <input class="iField" type="text" name="lastname" id="lastname"/>
+                <input class="iField" type="text" name="lastname" id="lastname" required/>
             </div>
         </div>
 
         <div class="d-sm-flex justify-content-sm-between">
             <div class="entryHalved">
                 <label for="phone">Phone Number *</label>
-                <input class="iField" type="tel" name="phone" id="phone"/>
+                <input class="iField" type="tel" name="phone" id="phone" required/>
             </div>
 
             <div class="entryHalved">
                 <label for="email">E-mail *</label>
-                <input class="iField" type="email" name="email" id="email"/>
+                <input class="iField" type="email" name="email" id="email" required/>
             </div>
         </div>
 
         <div class="d-sm-flex justify-content-sm-between">
             <div class="entryHalved">
                 <label for="date">Appointment Date *</label>
-                <input class="iField" type="date" name="date" id="date"/>
+                <input class="iField" type="date" name="date" id="date" required/>
             </div>
 
             <div class="entryHalved">
                 <label for="time">Appointment Time *</label>
-                <input class="iField" type="time" min="10:00" max="18:00" name="time" id="time"/>
+                <input class="iField" type="time" min="10:00" max="18:00" name="time" id="time" required/>
             </div>
         </div>
         
        
         <label for="service">Service Required *</label>
-        <select class="iField" name="service" id="service">
+        <select class="iField" name="service" id="service" required>
             <option value="Null">---</option>
             <option value="Cleaning">Cleaning</option>
             <option value="Check-up">Check-up</option>
@@ -92,10 +92,10 @@
         </select>
 
         <p class="text-dark fw-bold">Current Patient? *
-        <input type="radio" id="current" name="current" value="YES"/>
+        <input type="radio" id="current" name="current" value="YES" required/>
         <label for="askCurrent1">YES</label>
 
-        <input type="radio" id="current" name="current" value="NO">
+        <input type="radio" id="current" name="current" value="NO" required/>
         <label for="askCurrent2">NO</label>
         </p>
 
