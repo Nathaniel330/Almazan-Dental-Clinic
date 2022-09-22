@@ -142,7 +142,8 @@
                                     <div class="modal-body">
                                         <form method="POST" action="/updates/<%=appointment[i].id%>" class="d-inline">
                                             <div class="modal-body">
-                                                <p>Are you sure you want to <b style="color: darkgreen">Change the status of patient <%= appointment[i].firstname%> <%= appointment[i].lastname%> TO DONE? </b></p>
+                                                <p>Are you sure you want to <b style="color: darkgreen">Change the status of patient <%= appointment[i].firstname%> <%= appointment[i].lastname%> TO DONE?  </b></p>
+                                                <p class="mt-2 text-danger">Note: Once you change the status you cannot rever it!</p>
                                                 <input type="text" value="Done" name="status" id="name" hidden>
                                             </div>
                                             <div class="modal-footer">
