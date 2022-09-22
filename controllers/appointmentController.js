@@ -5,14 +5,14 @@ const Dentist = require('../model/dentist');
 
 //Get all books
 const appointmentIndex = async(req, res) =>{
-    let appointment = await Appointment.find().sort({createdAt: -1})
+    let appointment = await Appointment.find().sort({date: 1})
     let dentist = await Dentist.find().sort({createdAt: -1})
+    let today = new Date().toISOString().slice(0, 10)
 
     if(!appointment && !dentist) return res.status(404).send('Cannot find data');
-    res.render('index', {title: "Home Admin", appointment: appointment, dentist: dentist})
+    res.render('index', {title: "Home Admin", appointment: appointment, dentist: dentist, today:today})
         
 }
-
 
 //Find books
 const appointmentFind = (req,res) => {
@@ -40,18 +40,19 @@ const appointmentAdd = async (req, res) => {
 		service: req.body.service,
         current: req.body.current,
         dentist: req.body.dentist,
-        message: req.body.message
+        message: req.body.message,
+        status: req.body.status
     })
+    // const alert = error.details[0].message;
     //res.send(error.details[0].message);
     //check if the inputs are valid 
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return  res.render('home', {title: 'Home', alert: error.details[0].message});
     // //check existing email 
     // const userEmail = await User.findOne({email: req.body.email})
     //res.send(userEmail); 
     // if(userEmail) return res.status(404).send("Email Already Exist") 
     try {
         const savedAppointment = await appointment.save();
-        // res.status(200).render('home', {title: 'Home'});
         res.status(200).redirect('/');
         console.log('New appointment is added');
     } catch (error) {
@@ -100,11 +101,23 @@ const appointmentAddPage = (req,res) => {
 
 }
 
+const statusUpdate = async (req, res) => {
+    let id = req.params.id
+    let statusToUpdate = await Appointment.findByIdAndUpdate(id, {
+        status: req.body.status
+    })
+    if(!statusToUpdate ) return res.status(404).send('Status is not updated');
+    res.redirect('/admin')
+        
+}
+
+
 module.exports = {
     appointmentIndex,
     appointmentAdd,
     appointmentFind,
     appointmentDelete,
     appointmentAddPage,
-    appointmentUpdate
+    appointmentUpdate,
+    statusUpdate
 }

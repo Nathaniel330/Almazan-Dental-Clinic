@@ -33,6 +33,8 @@ router.get('/add', appController.appointmentAddPage)
 
 router.post('/update/:id', appController.appointmentUpdate)
 
+router.post('/updates/:id', appController.statusUpdate)
+
 
 //dentist
 router.get('/dentist', dentistController.dentistIndex);
@@ -44,6 +46,9 @@ router.delete('/dentist/:id', dentistController.dentistDelete);
 router.post('/updatedentist/:id', dentistController.dentistUpdate)
 
 router.get('/admin', dentistController.dentistIndex);
+
+//service
+
 
 
 module.exports = router;
