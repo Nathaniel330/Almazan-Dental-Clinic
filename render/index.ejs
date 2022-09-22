@@ -74,7 +74,12 @@
                                         <h5>Name: <%=appointment[i].firstname%> <%=appointment[i].lastname%> </h5>
                                         <h5>Type of Service: <%=appointment[i].service%> </h5>
                                         <h5 for="dentist">Dentist:</h5>
-                                        <input type="text" name="dentist" class="form-control" placeholder="<%=appointment[i].dentist%>"/>
+                                        <select class="form-select" name="dentist" id="dentist">
+                                            <%dentist.forEach (element => {%>
+                                            <option value="<%=element.firstname%> <%=element.lastname%>"><%=element.firstname%> <%=element.lastname%></option>
+                                            <%})%>
+                                        </select>
+                                        
                                         <div class="modal-footer">
                                         <input class="btn btn-success" type="submit" value="Assign">
                                         <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
