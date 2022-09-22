@@ -11,7 +11,9 @@ const validation = (data)=>{
 		service: Joi.string().required(),
         current: Joi.string().required(),
         dentist: Joi.string().allow(''),
-        message: Joi.string().allow('').max(100)
+        message: Joi.string().allow('').max(100),
+        status: Joi.string().allow('')
+        
     });
     return schema.validate(data);
 }
