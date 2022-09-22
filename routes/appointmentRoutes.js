@@ -5,19 +5,19 @@ const dentistController = require('../controllers/dentistController');
 const router = express.Router()
 
 router.get("/", (kahilingan, tugon)=>{
-    tugon.status(201).render("home", {title:"HOME"})
+    tugon.status(201).render("home", {title:"Almazan-Padlan Dental Clinic"})
 })
 
 router.get("/about_us", (req, res)=>{
-    res.status(201).render("about_us", {title:"ABOUT US"})
+    res.status(201).render("about_us", {title:"About Us: Almazan-Padlan Dental Clinic"})
 })
 
 router.get("/services_basic", (req, res)=>{
-    res.status(201).render("services_basic", {title:"BASIC SERVICES"})
+    res.status(201).render("services_basic", {title:"Basic Services: Almazan-Padlan Dental Clinic"})
 })
 
 router.get("/services_specialized", (req, res)=>{
-    res.status(201).render("services_specialized", {title:"SPECIALIZED SERVICES"})
+    res.status(201).render("services_specialized", {title:"Specialized Services: Almazan-Padlan Dental Clinic"})
 })
 
 //appointment
