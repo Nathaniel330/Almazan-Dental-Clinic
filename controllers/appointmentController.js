@@ -1,17 +1,18 @@
 const { render } = require('ejs');
 const Appointment = require('../model/appointment');
 const validation = require('../controllers/validation');
+const Dentist = require('../model/dentist');
 
 //Get all books
-const appointmentIndex = (req, res) =>{
-    Appointment.find().sort({createdAt: -1})
-    .then((result)=>{
-        res.render('index', {title: "Home", appointment: result})
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
+const appointmentIndex = async(req, res) =>{
+    let appointment = await Appointment.find().sort({createdAt: -1})
+    let dentist = await Dentist.find().sort({createdAt: -1})
+
+    if(!appointment && !dentist) return res.status(404).send('Cannot find data');
+    res.render('index', {title: "Home Admin", appointment: appointment, dentist: dentist})
+        
 }
+
 
 //Find books
 const appointmentFind = (req,res) => {
@@ -50,6 +51,7 @@ const appointmentAdd = async (req, res) => {
     // if(userEmail) return res.status(404).send("Email Already Exist") 
     try {
         const savedAppointment = await appointment.save();
+        // res.status(200).render('home', {title: 'Home'});
         res.status(200).redirect('/');
         console.log('New appointment is added');
     } catch (error) {
@@ -74,6 +76,7 @@ const appointmentAdd = async (req, res) => {
 const appointmentUpdate = async (req, res) => {
     let id = req.params.id
     let appointmentToUpdate = await Appointment.findByIdAndUpdate(id, {
+    
         dentist: req.body.dentist    
     })
     if(!appointmentToUpdate) return res.status(404).send('Patient is not updated');
