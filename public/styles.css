@@ -1,5 +1,4 @@
 html {
-    font-size: smaller;
     user-select: none;
 }
 
@@ -22,11 +21,10 @@ label {
 /*---------------------------------------------NAVBAR start---------------------------------------------*/
 nav, footer {
     background-color: #003f91;
-    /* color: black; */
 }
 
 .logo {
-    width: 250px;
+    width: 350px;
 }
 
 .navbar-nav li.navActiveHome {
@@ -42,7 +40,11 @@ div .navbar .navbar-nav li a {
     color: black;
 }
 
-#navContentHome {
+#navContentHome,
+div .navbar .dropdown-menu,
+div .navbar .dropdown-menu a:hover,
+div .navbar .dropdown:hover .dropdown-menu,
+div .navbar .dropdown:hover li {
     background-color: #5DA9E9;
 }
 
@@ -56,21 +58,11 @@ div .navbar li:hover {
     color: black;
 }
 
-div .navbar .dropdown-menu {
-    background-color: #5DA9E9;
-}
-
-div .navbar .dropdown-menu a:hover {
-    background-color: #5DA9E9;
-}
-
 div .navbar .dropdown:hover .dropdown-menu {
-    background-color: #5DA9E9;
     display: block;
 }
 
 div .navbar .dropdown:hover li {
-    background-color: #5DA9E9;
     border-bottom: solid #5DA9E9;
 }
 
@@ -86,40 +78,40 @@ div .navbar .dropdown:hover li:hover {
     color: white;
 }
 
-#navContent {
+#navContent,
+.dropdown-menu,
+.dropdown-menu a:hover,
+.dropdown:hover .dropdown-menu,
+.dropdown:hover li {
     background-color: #003f91;
 }
 
 .nav-item {
     font-weight: bold;
-    border-bottom: solid #003f91;
 }
 
 nav li:hover {
     border-bottom: solid #e5f4e3;
 }
 
-.dropdown-menu {
-    background-color: #003f91;
-}
-
-.dropdown-menu a:hover {
-    background-color: #003f91;
+.dropdown-menu,
+.dropdown-item {
+    padding: 0px;
 }
 
 .dropdown:hover .dropdown-menu {
-    background-color: #003f91;
     display: block;
 }
 
-.dropdown:hover li {
-    background-color: #003f91;
+.dropdown:hover li,
+.nav-item {
     border-bottom: solid #003f91;
 }
 
 .dropdown:hover li:hover {
     border-bottom: solid white;
 }
+
 /*---------------------------------------------NAVBAR end---------------------------------------------*/
 
 
@@ -135,7 +127,7 @@ nav li:hover {
     margin: 5px;
     padding: 0px 10px;
     top: 50%;
-    background-color: #e5f4e3;
+    /* background-color: #e5f4e3; */
     border-radius: 10%;
     z-index: 1;
 }
@@ -243,7 +235,8 @@ nav li:hover {
 
 
 /*------------------------------------ FORM: Book an Appointment start------------------------------------ */
-.iField {
+.iField,
+.iFieldArea {
     background-color: #5DA9E9;
     width: 100%;
     margin-bottom: 5%;
@@ -251,11 +244,7 @@ nav li:hover {
 }
 
 .iFieldArea {
-    background-color: #5DA9E9;
-    width: 100%;
     height: 20%;
-    margin-bottom: 5%;
-    font-size: medium;
 }
 
 input[type="radio"]{
@@ -269,7 +258,7 @@ input[type="radio"]{
 }
 
 .booking form {
-    padding: 7%;
+    padding: 1% 7%;
 }
 
 ::-webkit-calendar-picker-indicator:hover {
@@ -322,6 +311,10 @@ input[type="radio"]{
 
 .padding-y-30px {
     padding: 30px 0;
+}
+
+.padding-right-custom {
+    padding-right: 0px;
 }
 
 .mapouter{
@@ -431,6 +424,7 @@ footer {
 
 footer span{
     font-weight: bold;
+    border-bottom: 1px solid white;
 }
 
 footer ul {
@@ -489,11 +483,11 @@ footer ul ul li {
 @media (min-width: 576px) {
     .navbar-brand,
     .extra__start {
-        margin-left: 10%;
+        margin-left: 8%;
     }
     .navbar-toggler, .navbar-nav,
     .extra__end {
-        margin-right: 10%;
+        margin-right: 12%;
     }
 
     .services_display {
@@ -566,6 +560,10 @@ footer ul ul li {
 }
 
 @media (min-width: 960px) {
+    .padding-right-custom {
+        padding-right: 7%;
+    }
+
     .aboutBodyChild, 
     .aboutBodyChildReverse {
         display: flex;

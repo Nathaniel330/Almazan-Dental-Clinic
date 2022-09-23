@@ -19,16 +19,16 @@
 <div style="height:15vh"></div> <!--SPACER-->
 
 <div class="text-center">
-    <p class="display-4 fw-bold">SERVICES</p>
-    <div class="services_display">
-        <div>
+    <p class="display-4 fw-bold">SERVICES OFFERED</p>
+    <div class="services_display padding-y-30px">
+        <div class="padding-y-30px">
             <img src="/img/clean.jfif" class="img-fluid" alt=""><br>
-            <span class="display-6 fw-bold">Basic Dental Services</span><br>
+            <p class="display-6 fw-bold">Basic Dental Services</p>
             <a href="/services_basic" class="viewServicesBTN">View Services</a>
         </div>
-        <div>
+        <div class="padding-y-30px">
             <img src="/img/dental-surgery.jfif" class="img-fluid" alt=""><br>
-            <span class="display-6 fw-bold">Specialized Services</span><br>
+            <p class="display-6 fw-bold">Specialized Services</p>
             <a href="/services_specialized" class="viewServicesBTN">View Services</a>
         </div>
     </div>
@@ -48,57 +48,57 @@
 
         <form action="/appointment" method="POST">
             <div class="text-center">
-                <p class="display-4 fw-bold">Book an Appointment</p>
+                <p class="display-6 fw-bold">Appointment Form</p>
             </div>
             <div class="d-sm-flex justify-content-sm-between">
                 <div class="entryHalved">
-                    <label for="firstname">First Name*</label>
-                    <input class="iField" type="text" name="firstname" id="firstname"/>
+                    <label for="firstname" class="form-label">First Name *</label>
+                    <input class="iField form-control" type="text" name="firstname" id="firstname"/>
                 </div>
 
                 <div class="entryHalved">
-                    <label for="lastname">Last Name*</label>
-                    <input class="iField" type="text" name="lastname" id="lastname"/>
-                </div>
-            </div>
-
-            <div class="d-sm-flex justify-content-sm-between">
-                <div class="entryHalved">
-                    <label for="phone">Phone Number*</label>
-                    <input class="iField" type="tel" name="phone" id="phone"/>
-                </div>
-
-                <div class="entryHalved">
-                    <label for="email">E-mail*</label>
-                    <input class="iField" type="email" name="email" id="email"/>
+                    <label for="lastname" class="form-label">Last Name *</label>
+                    <input class="iField form-control" type="text" name="lastname" id="lastname"/>
                 </div>
             </div>
 
             <div class="d-sm-flex justify-content-sm-between">
                 <div class="entryHalved">
-                    <label for="date">Preferred Appointment Date*</label>
-                    <input class="iField" type="date" name="date" id="date"/>
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input class="iField form-control" type="tel" name="phone" id="phone"/>
                 </div>
 
                 <div class="entryHalved">
-                    <label for="time">Preferred Appointment Time*</label>
-                    <input class="iField" type="time" min="10:00" max="18:00" name="time" id="time"/>
+                    <label for="email" class="form-label">E-mail *</label>
+                    <input class="iField form-control" type="email" name="email" id="email"/>
                 </div>
             </div>
 
-            <label for="service">Service Required*</label>
-            <select class="iField" name="service" id="service">
+            <div class="d-sm-flex justify-content-sm-between">
+                <div class="entryHalved">
+                    <label for="date" class="form-label">Appointment Date *</label>
+                    <input class="iField" class="form-control" type="date" name="date" id="date"/>
+                </div>
+
+                <div class="entryHalved">
+                    <label for="time" class="form-label">Appointment Time *</label>
+                    <input class="iField" class="form-control" type="time" min="10:00" max="18:00" name="time" id="time"/>
+                </div>
+            </div>
+
+            <label for="service" class="form-label">Service Required *</label>
+            <select class="iField" class="form-select" name="service" id="service">
                 <option value="Null">---</option>
-                <option value="Cleaning">Cleaning</option>
-                <option value="Check-up">Check-up</option>
-                <option value="Cosmetics">Cosmetics</option>
-                <option value="Fillings">Fillings</option>
-                <option value="Surgery">Surgery</option>
-                <option value="Orthodontics">Orthodontics</option>
-                <option value="Others">Others</option>
+                <option class="form-control" value="Cleaning">Cleaning</option>
+                <option class="form-control" value="Check-up">Check-up</option>
+                <option class="form-control" value="Cosmetics">Cosmetics</option>
+                <option class="form-control" value="Fillings">Fillings</option>
+                <option class="form-control" value="Surgery">Surgery</option>
+                <option class="form-control" value="Orthodontics">Orthodontics</option>
+                <option class="form-control" value="Others">Others</option>
             </select>
 
-            <p class="text-dark fw-bold">Current Patient?
+            <p class="text-dark fw-bold">Current Patient? *
             <input type="radio" id="current" name="current" value="YES"/>
             <label for="askCurrent1">YES</label>
 
@@ -106,15 +106,15 @@
             <label for="askCurrent2">NO</label>
             </p>
 
-            <label for="dentist">If Yes, Name of Attending Dentist (may be left blank)</label>
-            <input class="iField" type="text" name="dentist" id="dentist"/>
+            <label for="dentist" class="form-label">If Yes, Name of Attending Dentist (may be left blank)</label>
+            <input class="iField form-control" type="text" name="dentist" id="dentist"/>
 
-            <label for="message">Message</label>
-            <textarea class="iFieldArea" id="message" name="message" rows="4" cols="50"></textarea>
+            <label for="message" class="form-label">Message</label>
+            <textarea class="iFieldArea form-control" id="message" name="message" rows="4" cols="50"></textarea>
 
             <input class="iField" type="text" name="status" id="status" value="Pending" hidden/>
 
-            <div class="text-center"><input type="submit" value="submit" class="submitBTN"></div>
+            <div class="text-center"><input type="submit" value="SUBMIT" class="submitBTN"></div>
         </form>
     </div>
 </div>
@@ -192,6 +192,13 @@
             <img src="/img/denture.jfif" class="img-fluid" alt="">
             <img src="/img/orthodontic-braces.jfif" class="img-fluid" alt="">
             <img src="/img/dental-surgery.jfif" class="img-fluid" alt="">
+        </div>
+    </div>
+    <div class="slide">
+        <div class="slides">
+            <img src="/img/management.jfif" class="img-fluid" alt="">
+            <img src="/img/whitening.png" class="img-fluid" alt="">
+            <img src="/img/kidswaitingarea.jpeg" class="img-fluid" alt="">
         </div>
     </div>
 </div>

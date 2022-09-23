@@ -8,8 +8,7 @@ var bgImage = new Array(
     "./img/bamboobrush.jfif",
     "./img/instruments.jfif",
     "./img/dentaldrills.jfif",
-    "./img/dentist.jfif",
-    "./img/comparing.png",
+    // "./img/dentist.jfif",
     "./img/handslove.jfif",
     "./img/dentalconcept.jfif"
 )
