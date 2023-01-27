@@ -21,6 +21,15 @@ app.set("view engine", "ejs")
 app.set("views", "render")
 
 
+// mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=>{
+//     if(err) throw err
+//     console.log("Connected")
+// })
+mongoose.connect(process.env.DB_CONNECT , ()=>{
+    console.log(`Connected to Database. \nPlease check DB_CONNECT to verify connection.`)
+})
+
+
 //connect
 // const port = 3000
 // app.listen(port, ()=>{
@@ -29,12 +38,3 @@ app.set("views", "render")
 
 var port_number = process.env.PORT || 3000;
 app.listen(port_number, ()=>console.log(`PORT: ${port_number}`));
-
-
-// mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true}, (err)=>{
-//     if(err) throw err
-//     console.log("Connected")
-// })
-mongoose.connect(process.env.DB_CONNECT , ()=>{
-    console.log(`Connected to Database. \nPlease check DB_CONNECT to verify connection.`)
-})
